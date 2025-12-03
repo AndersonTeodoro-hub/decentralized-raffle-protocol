@@ -1,0 +1,5 @@
+{
+  "name": "Decentralized Raffle Protocol",
+  "description": "A fully decentralized, anonymous web3 raffle platform where users bet USDC, winners are chosen via VRF, and rounds reset every 30 minutes.",
+  "requestFramePermissions": []
+}

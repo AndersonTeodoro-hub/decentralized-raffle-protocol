@@ -1,3 +1,5 @@
+import ConnectWallet from "../components/ConnectWallet";
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-8">
@@ -10,9 +12,8 @@ export default function Home() {
         5 USDC per ticket • Max 100 bets per wallet • Automatic payouts.
       </p>
 
-      <div className="mt-10 text-center text-yellow-400 text-2xl">
-        Front-end base loaded successfully ✔️
-      </div>
+      <ConnectWallet />
     </main>
   );
 }
+

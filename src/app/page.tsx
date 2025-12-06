@@ -1,19 +1,19 @@
 import ConnectWallet from "../components/ConnectWallet";
+import Countdown from "../components/Countdown";
+import BuyTickets from "../components/BuyTickets";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8">
-      <h1 className="text-4xl font-bold mb-4 text-white">
+    <main className="flex flex-col items-center p-6">
+      <h1 className="text-4xl font-bold text-white mt-10">
         Decentralized Raffle Protocol
       </h1>
 
-      <p className="text-gray-300 text-center max-w-xl">
-        Anonymous betting with verifiable randomness (VRF).  
-        5 USDC per ticket • Max 100 bets per wallet • Automatic payouts.
-      </p>
+      <Countdown />
 
       <ConnectWallet />
+
+      <BuyTickets />
     </main>
   );
 }
-

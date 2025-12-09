@@ -1,17 +1,32 @@
-import { http, createConfig } from "wagmi";
-import { polygon, arbitrum } from "wagmi/chains";
+import { configureChains, createConfig } from "wagmi";
+import { arbitrum, polygon } from "wagmi/chains";
+import { publicProvider } from "wagmi/providers/public";
 import { getDefaultWallets } from "@rainbow-me/rainbowkit";
 
-const { wallets } = getDefaultWallets({
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [polygon, arbitrum],
+  [publicProvider()]
+);
+
+const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID;
+
+if (!projectId) {
+  throw new Error(
+    "Missing NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID env var required for WalletConnect"
+  );
+}
+
+const { connectors } = getDefaultWallets({
   appName: "Decentralized Raffle Protocol",
-  projectId: "raffle-protocol", // depois substituímos pelo seu ID real do WalletConnect
+  projectId,
+  chains,
 });
 
 export const config = createConfig({
-  chains: [polygon, arbitrum],
-  connectors: wallets,
-  transports: {
-    [polygon.id]: http(),
-    [arbitrum.id]: http(),
-  },
+  autoConnect: true,
+  connectors,
+  publicClient,
+  webSocketPublicClient,
 });
+
+export { chains };

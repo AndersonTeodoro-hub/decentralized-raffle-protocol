@@ -10,6 +10,15 @@ A Next.js 14 application demonstrating a decentralized raffle experience with Ra
    npm install
    ```
 
+   If you hit `403 Forbidden` errors while fetching packages (often caused by
+   strict proxy settings), clear any proxy-related environment variables and
+   retry with explicit proxy overrides:
+
+   ```bash
+   unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY npm_config_http_proxy npm_config_https_proxy
+   npm install --registry=https://registry.npmjs.org --proxy=null --https-proxy=null
+   ```
+
 2. Create a `.env.local` file (or copy `.env.example`) with your WalletConnect Cloud project ID (required by RainbowKit connectors):
 
    ```bash
